@@ -7,14 +7,32 @@ option objc_class_prefix = "HLW";
 
 package br.com.zup;
 
-service KeymanagerGrpcService {
-  rpc send (KeymanagerGrpcRequest) returns (KeymanagerGrpcReply) {}
+service RegistrarNovaChavePixService {
+  rpc registrar(NovaChavePixRequest) returns (NovaChavePixResponse) {}
 }
 
-message KeymanagerGrpcRequest {
-  string name = 1;
+enum TipoChave {
+  KEY_UNDEFINED = 0;
+  CPF = 1;
+  CELULAR = 2;
+  EMAIL = 3;
+  ALEATORIA = 4;
 }
 
-message KeymanagerGrpcReply {
-  string message = 1;
+enum TipoConta {
+  ACCOUNT_UNDEFINED = 0;
+  CONTA_CORRENTE = 1;
+  CONTA_POUPANCA = 2;
+}
+
+message NovaChavePixRequest {
+  string identificador = 1;
+  TipoChave tipoChave = 2;
+  string  valorChave= 3;
+  TipoConta tipoConta = 4;
+}
+
+message NovaChavePixResponse {
+  string clientId = 1;
+  string pixId = 2;
 }
