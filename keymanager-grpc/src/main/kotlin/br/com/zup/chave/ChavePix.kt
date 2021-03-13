@@ -1,5 +1,6 @@
 package br.com.zup.chave
 
+import br.com.zup.bcb.*
 import br.com.zup.itau.ContaChavePix
 import org.hibernate.annotations.Type
 import java.time.LocalDateTime
@@ -41,4 +42,30 @@ class ChavePix(
 
     @Column(nullable = false)
     val criadaEm: LocalDateTime = LocalDateTime.now()
+
+    fun toModel(tipoConta: String) : CreatePixKeyRequest {
+        return CreatePixKeyRequest(
+            keyType = when(tipo) {
+                TipoChave.ALEATORIA -> KeyType.RANDOM
+                TipoChave.CPF -> KeyType.CPF
+                TipoChave.CELULAR -> KeyType.PHONE
+                TipoChave.EMAIL -> KeyType.EMAIL
+            },
+            key = chave,
+            Bank(
+                participant = "60701190",
+                branch = conta.agencia,
+                accountNumber = conta.numeroDaConta,
+                accountType = when(tipoConta) {
+                    "CONTA_CORRENTE" -> AccountType.CACC
+                    else -> AccountType.SVGS
+                }
+            ),
+            Owner(
+                type = br.com.zup.bcb.Type.NATURAL_PERSON,
+                name = conta.nomeDoTitular,
+                taxIdNumber = conta.cpfDoTitular
+            )
+        )
+    }
 }
