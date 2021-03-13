@@ -1,9 +1,9 @@
-package br.com.zup.key.register
+package br.com.zup.chave.registra
 
 import br.com.zup.exception.ChavePixExistenteException
 import br.com.zup.itau.SistemaItauClient
-import br.com.zup.key.ChavePix
-import br.com.zup.key.ChavePixRepository
+import br.com.zup.chave.ChavePix
+import br.com.zup.chave.ChavePixRepository
 import io.micronaut.validation.Validated
 import java.lang.IllegalStateException
 import javax.inject.Singleton

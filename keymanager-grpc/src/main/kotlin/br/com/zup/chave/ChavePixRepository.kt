@@ -1,4 +1,4 @@
-package br.com.zup.key
+package br.com.zup.chave
 
 import io.micronaut.data.annotation.Repository
 import io.micronaut.data.jpa.repository.JpaRepository
@@ -8,4 +8,5 @@ import java.util.*
 interface ChavePixRepository : JpaRepository<ChavePix, UUID> {
 
     fun existsByChave(valorChave: String) : Boolean
+    fun existsByIdAndClienteId(id: UUID, clienteId: UUID) : Boolean
 }

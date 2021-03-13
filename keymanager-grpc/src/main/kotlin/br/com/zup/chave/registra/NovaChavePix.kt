@@ -1,9 +1,9 @@
-package br.com.zup.key.register
+package br.com.zup.chave.registra
 
 import br.com.zup.itau.ContaChavePix
-import br.com.zup.key.ChavePix
-import br.com.zup.key.TipoChave
-import br.com.zup.key.TipoConta
+import br.com.zup.chave.ChavePix
+import br.com.zup.chave.TipoChave
+import br.com.zup.chave.TipoConta
 import br.com.zup.validacoes.ValidPixKey
 import br.com.zup.validacoes.ValidaUUID
 import io.micronaut.core.annotation.Introspected
