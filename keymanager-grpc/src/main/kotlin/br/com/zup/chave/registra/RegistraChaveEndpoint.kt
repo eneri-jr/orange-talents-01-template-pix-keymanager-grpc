@@ -1,13 +1,14 @@
 package br.com.zup.chave.registra
 
 import br.com.zup.*
+import br.com.zup.bcb.*
 import br.com.zup.handler.ErrorHandler
 import io.grpc.stub.StreamObserver
 import javax.inject.Singleton
 
 @Singleton
 @ErrorHandler
-class RegistraChaveEndpoint (val service: NovaChavePixService) : RegistrarNovaChavePixServiceGrpc.RegistrarNovaChavePixServiceImplBase(){
+class RegistraChaveEndpoint (val service: NovaChavePixService, val client : SistemaBcbClient) : RegistrarNovaChavePixServiceGrpc.RegistrarNovaChavePixServiceImplBase(){
 
     override fun registrar(request: NovaChavePixRequest?, responseObserver: StreamObserver<NovaChavePixResponse>?) {
 
