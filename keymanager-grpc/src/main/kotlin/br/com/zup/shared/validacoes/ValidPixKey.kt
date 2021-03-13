@@ -1,6 +1,6 @@
 package br.com.zup.validacoes
 
-import br.com.zup.key.register.NovaChavePix
+import br.com.zup.chave.registra.NovaChavePix
 import io.micronaut.core.annotation.AnnotationValue
 import javax.inject.Singleton
 import javax.validation.Constraint

@@ -1,6 +1,7 @@
-package br.com.zup.key
+package br.com.zup.chave
 
 import br.com.zup.itau.ContaChavePix
+import org.hibernate.annotations.Type
 import java.time.LocalDateTime
 import java.util.*
 import javax.persistence.*
@@ -17,6 +18,7 @@ import javax.validation.constraints.NotNull
 class ChavePix(
     @field:NotNull
     @Column(nullable = false)
+    @Type(type = "org.hibernate.type.UUIDCharType")
     val clienteId: UUID,
 
     @field:NotNull
@@ -34,6 +36,7 @@ class ChavePix(
 ) {
     @Id
     @GeneratedValue
+    @Type(type = "org.hibernate.type.UUIDCharType")
     val id: UUID? = null
 
     @Column(nullable = false)

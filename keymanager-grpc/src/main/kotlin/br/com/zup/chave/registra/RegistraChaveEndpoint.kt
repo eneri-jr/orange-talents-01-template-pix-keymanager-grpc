@@ -1,4 +1,4 @@
-package br.com.zup.key.register
+package br.com.zup.chave.registra
 
 import br.com.zup.*
 import br.com.zup.handler.ErrorHandler

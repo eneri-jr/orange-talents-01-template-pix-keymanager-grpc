@@ -11,6 +11,10 @@ service RegistrarNovaChavePixService {
   rpc registrar(NovaChavePixRequest) returns (NovaChavePixResponse) {}
 }
 
+service RemoveChavePixService {
+  rpc remover(ChavePixRequest) returns (MensagemRemocaoResponse) {}
+}
+
 enum TipoChave {
   KEY_UNDEFINED = 0;
   CPF = 1;
@@ -35,4 +39,13 @@ message NovaChavePixRequest {
 message NovaChavePixResponse {
   string clientId = 1;
   string pixId = 2;
+}
+
+message ChavePixRequest {
+  string pixId = 1;
+  string clientId = 2;
+}
+
+message MensagemRemocaoResponse {
+  string mensagem = 1;
 }
