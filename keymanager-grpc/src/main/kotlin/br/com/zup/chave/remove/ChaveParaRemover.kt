@@ -6,7 +6,7 @@ import java.util.*
 import javax.validation.constraints.NotBlank
 
 @Introspected
-data class ChaveParaRemover(
+data class ChaveRequest(
 
     @field:ValidaUUID
     val chaveId : String,

@@ -8,7 +8,7 @@ import javax.inject.Singleton
 
 @Singleton
 @ErrorHandler
-class RegistraChaveEndpoint (val service: NovaChavePixService, val client : SistemaBcbClient) : RegistrarNovaChavePixServiceGrpc.RegistrarNovaChavePixServiceImplBase(){
+class RegistraChaveEndpoint (val service: NovaChavePixService) : RegistrarNovaChavePixServiceGrpc.RegistrarNovaChavePixServiceImplBase(){
 
     override fun registrar(request: NovaChavePixRequest?, responseObserver: StreamObserver<NovaChavePixResponse>?) {
 

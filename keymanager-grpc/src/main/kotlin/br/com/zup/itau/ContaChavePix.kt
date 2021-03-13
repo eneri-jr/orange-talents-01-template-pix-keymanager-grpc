@@ -9,4 +9,5 @@ data class ContaChavePix(
     val cpfDoTitular : String,
     val agencia : String,
     val numeroDaConta : String,
+    val tipoConta : String
 )
