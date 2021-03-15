@@ -18,4 +18,9 @@ interface SistemaBcbClient {
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
     fun deletaChaveBcb(@Parameter key: String, @Body request: DeletePixKeyRequest) : HttpResponse<DeletePixKeyResponse>
+
+    @Get("/api/v1/pix/keys/{key}")
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_XML)
+    fun buscaChave(@Parameter key: String) : HttpResponse<CreatePixKeyResponse>
 }

@@ -13,7 +13,8 @@ data class DetalhesDaContaResponse(
             nomeDoTitular = this.titular.nome,
             cpfDoTitular = this.titular.cpf,
             agencia = this.agencia,
-            numeroDaConta = this.numero
+            numeroDaConta = this.numero,
+            tipoConta = this.tipo
 
         )
     }

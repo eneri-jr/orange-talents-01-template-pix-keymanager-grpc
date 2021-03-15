@@ -18,7 +18,7 @@ import javax.validation.Valid
 class RemoveChaveService (val repository : ChavePixRepository, val bcbClient: SistemaBcbClient) {
 
     @Transactional
-    fun remover(@Valid chave : ChaveParaRemover) {
+    fun remover(@Valid chave : ChaveRequest) {
 
         val possivelChave = repository.findByIdAndClienteId(UUID.fromString(chave.chaveId), UUID.fromString(chave.clienteId))
         if(!possivelChave.isPresent)

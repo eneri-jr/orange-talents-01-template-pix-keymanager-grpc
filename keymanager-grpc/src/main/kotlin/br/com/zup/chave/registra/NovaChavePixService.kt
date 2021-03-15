@@ -32,7 +32,7 @@ class NovaChavePixService(
         val chave = novaChave.toModel(conta)
         repository.save(chave)
 
-        val chaveBcb = chave.toModel(novaChave.tipoConta!!.name)
+        val chaveBcb = chave.toModel(novaChave.tipoConta.name)
 
         val responseBcb = bcbClient.registraChaveBcb(chaveBcb)
         if(responseBcb.status != HttpStatus.CREATED)
