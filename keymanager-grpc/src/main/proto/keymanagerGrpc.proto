@@ -20,6 +20,10 @@ service DetalhaChavePixService {
   rpc detalhar(DetalhaChavePixRequest) returns (DetalhamentoPixResponse) {}
 }
 
+service ListaChavesPixService {
+  rpc listar(ClientePixRequest) returns (ListaDeChavesPixResponse) {}
+}
+
 enum TipoChave {
   KEY_UNDEFINED = 0;
   CPF = 1;
@@ -83,4 +87,22 @@ message DetalhamentoPixResponse {
   string valorChave = 4;
   Conta conta = 5;
   google.protobuf.Timestamp registradaEm = 6;
+}
+
+message ClientePixRequest {
+  string identificador = 1;
+}
+
+message ListaDeChavesPixResponse {
+
+  message ChavePix{
+    string pixId = 1;
+    string clienteId = 2;
+    string tipoChave = 3;
+    string valorChave = 4;
+    string tipoConta = 5;
+    google.protobuf.Timestamp criadaEm = 6;
+  }
+
+  repeated ChavePix chavePix = 1;
 }
