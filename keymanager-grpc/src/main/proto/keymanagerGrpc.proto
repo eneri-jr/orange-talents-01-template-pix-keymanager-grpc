@@ -17,7 +17,7 @@ service RemoveChavePixService {
 }
 
 service DetalhaChavePixService {
-  rpc detalhar(ChavePixRequest) returns (DetalhamentoPixResponse) {}
+  rpc detalhar(DetalhaChavePixRequest) returns (DetalhamentoPixResponse) {}
 }
 
 enum TipoChave {
@@ -53,6 +53,18 @@ message ChavePixRequest {
 
 message MensagemRemocaoResponse {
   string mensagem = 1;
+}
+
+message DetalhaChavePixRequest{
+  message DadosPixInterno {
+    string clienteId = 1;
+    string pixId = 2;
+  }
+
+  oneof dadosPixExterno {
+    DadosPixInterno dados = 1;
+    string chave = 2;
+  }
 }
 
 message Conta {

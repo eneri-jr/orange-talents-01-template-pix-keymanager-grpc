@@ -20,7 +20,7 @@ class ChavePix(
     @field:NotNull
     @Column(nullable = false)
     @Type(type = "org.hibernate.type.UUIDCharType")
-    val clienteId: UUID,
+    val clienteId: UUID?,
 
     @field:NotNull
     @Enumerated(EnumType.STRING)

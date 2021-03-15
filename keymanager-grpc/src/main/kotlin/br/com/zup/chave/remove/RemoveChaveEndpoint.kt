@@ -12,10 +12,10 @@ import javax.inject.Singleton
 class RemoveChaveEndpoint(val service: RemoveChaveService) : RemoveChavePixServiceGrpc.RemoveChavePixServiceImplBase() {
 
     override fun remover(request: ChavePixRequest, responseObserver: StreamObserver<MensagemRemocaoResponse>) {
-        val chave = request!!.toModel()
+        val chave = request.toModel()
         service.remover(chave)
 
-        responseObserver!!.onNext(
+        responseObserver.onNext(
             MensagemRemocaoResponse.newBuilder()
                 .setMensagem("Chave removida com sucesso.")
                 .build()

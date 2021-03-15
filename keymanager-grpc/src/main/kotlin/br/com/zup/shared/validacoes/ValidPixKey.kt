@@ -30,7 +30,7 @@ class ValidPixKeyValidator : ConstraintValidator<ValidPixKey, NovaChavePix> {
         context: ConstraintValidatorContext
     ): Boolean {
 
-        if (value?.tipoChave == null) {
+        if (value.tipoChave == null) {
             return false
         }
 

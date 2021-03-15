@@ -7,14 +7,14 @@ import com.google.protobuf.Timestamp
 import io.grpc.stub.StreamObserver
 import java.time.ZoneId
 import javax.inject.Singleton
+import io.micronaut.validation.validator.Validator
 
 @Singleton
 @ErrorHandler
 class DetalhaChaveEndpoint (val service: DetalhaChaveService) : DetalhaChavePixServiceGrpc.DetalhaChavePixServiceImplBase(){
 
-    override fun detalhar(request: ChavePixRequest, responseObserver: StreamObserver<DetalhamentoPixResponse>) {
-        val chave = request!!.toModel()
-        val chaveDetalhada = service.detalhar(chave)
+    override fun detalhar(request: DetalhaChavePixRequest, responseObserver: StreamObserver<DetalhamentoPixResponse>) {
+        val chaveDetalhada= request.selecionaServico(service)
 
         val criada = chaveDetalhada.criadaEm.atZone(ZoneId.of("UTC")).toInstant()
 
