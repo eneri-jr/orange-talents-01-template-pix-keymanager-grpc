@@ -10,9 +10,9 @@ import javax.inject.Singleton
 @ErrorHandler
 class RegistraChaveEndpoint (val service: NovaChavePixService) : RegistrarNovaChavePixServiceGrpc.RegistrarNovaChavePixServiceImplBase(){
 
-    override fun registrar(request: NovaChavePixRequest?, responseObserver: StreamObserver<NovaChavePixResponse>?) {
+    override fun registrar(request: NovaChavePixRequest, responseObserver: StreamObserver<NovaChavePixResponse>) {
 
-        val novaChave = request!!.toModel()
+        val novaChave = request.toModel()
         val chaveCriada = service.registrar(novaChave)
 
         responseObserver!!.onNext(NovaChavePixResponse.newBuilder()

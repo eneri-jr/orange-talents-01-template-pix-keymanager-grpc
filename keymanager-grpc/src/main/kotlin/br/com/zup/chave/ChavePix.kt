@@ -43,7 +43,7 @@ class ChavePix(
     @Column(nullable = false)
     val criadaEm: LocalDateTime = LocalDateTime.now()
 
-    fun toModel(tipoConta: String) : CreatePixKeyRequest {
+    fun toModel() : CreatePixKeyRequest {
         return CreatePixKeyRequest(
             keyType = when(tipo) {
                 TipoChave.ALEATORIA -> KeyType.RANDOM
@@ -56,7 +56,7 @@ class ChavePix(
                 participant = "60701190",
                 branch = conta.agencia,
                 accountNumber = conta.numeroDaConta,
-                accountType = when(tipoConta) {
+                accountType = when(conta.tipoConta) {
                     "CONTA_CORRENTE" -> AccountType.CACC
                     else -> AccountType.SVGS
                 }

@@ -12,5 +12,7 @@ data class ChaveRequest(
     val chaveId : String,
 
     @field:ValidaUUID
-    val clienteId: String
+    val clienteId: String,
+
+    val ispb: String = "60701190"
 )
