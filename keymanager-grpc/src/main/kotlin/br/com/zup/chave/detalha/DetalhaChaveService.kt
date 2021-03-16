@@ -12,6 +12,7 @@ import br.com.zup.exception.ChavePixInexistenteException
 import br.com.zup.itau.ContaChavePix
 import io.micronaut.http.HttpStatus
 import io.micronaut.validation.Validated
+import org.slf4j.LoggerFactory
 import java.util.*
 import javax.inject.Singleton
 import javax.transaction.Transactional
@@ -23,8 +24,12 @@ import javax.validation.constraints.Size
 @Validated
 class DetalhaChaveService (val repository: ChavePixRepository, val bcbClient: SistemaBcbClient) {
 
+    private val logger = LoggerFactory.getLogger(this::class.java)
+
     @Transactional
     fun detalhesInternos(@Valid chave : ChaveRequest) : ChavePix {
+
+        logger.info("Pedido de detalhamento para a chave: $chave, usando o sistema interno")
 
         val possivelChave = repository.findByIdAndClienteId(UUID.fromString(chave.chaveId), UUID.fromString(chave.clienteId))
         if(!possivelChave.isPresent)
@@ -35,6 +40,8 @@ class DetalhaChaveService (val repository: ChavePixRepository, val bcbClient: Si
 
 
     fun detalhesExternos(@Size(max = 77) chave : String) : ChavePix{
+
+        logger.info("Pedido de detalhamento para a chave: $chave, usando o sistema externo")
 
         val possivelChave = repository.findByChave(chave)
         if(!possivelChave.isPresent)

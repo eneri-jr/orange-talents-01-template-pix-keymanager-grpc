@@ -5,6 +5,7 @@ import br.com.zup.chave.ChavePixRepository
 import br.com.zup.validacoes.ValidaUUID
 import com.google.protobuf.Timestamp
 import io.micronaut.validation.Validated
+import org.slf4j.LoggerFactory
 import java.time.ZoneId
 import java.util.*
 import javax.inject.Singleton
@@ -16,8 +17,13 @@ class ListaChavesPixService (
     val repository: ChavePixRepository
         ) {
 
+    private val logger = LoggerFactory.getLogger(this::class.java)
+
     @Transactional
     fun listarChaves(@ValidaUUID clienteId: String) : List<ListaDeChavesPixResponse.ChavePix> {
+
+        logger.info("Pedido de listagem para as chaves do clienteId: $clienteId")
+
         val listaDeChaves = repository.findByClienteId(UUID.fromString(clienteId))
 
         return listaDeChaves.map {
